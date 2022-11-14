@@ -1,0 +1,16 @@
+.App {
+    min-height: 100vh;
+    /* display: flex; */
+    background-image: url("https://img.freepik.com/free-vector/social-media-icons_53876-89124.jpg?w=2000");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    
+    
+  }
+  .App button:hover{
+    background-color: rgb(53, 53, 182);
+    color: white;
+  }
+  
+  
