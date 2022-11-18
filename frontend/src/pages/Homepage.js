@@ -1,10 +1,17 @@
-import React from 'react'
+import React ,{useEffect} from 'react'
 import { Tab,Tabs,Container,Box,TabList,TabPanels, TabPanel} from '@chakra-ui/react'
-import Login from "../pages/Components/Auth/Login";
-import Signup from "../pages/Components/Auth/Signup";
+import Login from "../Components/Auth/Login";
+import Signup from "../Components/Auth/Signup";
+import { useHistory } from 'react-router-dom';
 
 
 const Homepage = () => {
+  const history = useHistory();
+  useEffect(()=>{
+    const user = JSON.parse(localStorage.getItem('userInfo'));
+    if(user) history.push('/chats');
+
+  },[history]);
   return (
     <div >
     
