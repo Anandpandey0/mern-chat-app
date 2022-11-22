@@ -8,10 +8,12 @@
     
     
   }
+ 
   .App button:hover{
     background-color: rgb(53, 53, 182);
     color: white;
   }
+  
   
   ::-webkit-scrollbar {
     width: 0px;

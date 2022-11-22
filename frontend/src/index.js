@@ -13,13 +13,13 @@ const rootElement = document.getElementById('root');
 const root = createRoot(rootElement);
 
 root.render(
-  <ChakraProvider>
-  <BrowserRouter>
+    <BrowserRouter>
     <ChatProvider>
+  <ChakraProvider>
       <App />
-    </ChatProvider>
-  </BrowserRouter>
 </ChakraProvider>
+    </ChatProvider>
+  </BrowserRouter>,
 );
 
 // If you want to start measuring performance in your app, pass a function

@@ -1,24 +1,16 @@
 import {
   Box,
   Button,
-  Center,
-  Container,
   Flex,
-  Hide,
-  Image,
-  Show,
-  Square,
-  StackDivider,
   Text,
   useToast,
-  VStack,
+
 } from "@chakra-ui/react";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import { ChatState } from "../../Context/ChatProvider";
 import LoadingSearchResult from "../Spinner/LoadingSearchResult";
-import { anatomy } from "@chakra-ui/anatomy";
+
 import { getSender } from "../Config/LogicOfDisplayingChat";
 import GroupChatModel from "./GroupChatModel";
 
@@ -37,7 +29,7 @@ const ChatsContainer = ({fetchAgain}) => {
       };
 
       const { data } = await axios.get("/api/chat", config);
-      console.log(data);
+
       setChats(data);
     } catch (error) {
       toast({
@@ -63,7 +55,7 @@ const ChatsContainer = ({fetchAgain}) => {
       <Flex
       
         flexDirection="column"
-        h="80vh"
+        h="90vh"
        
       >
         <Flex flexDirection="row" justify="space-around">

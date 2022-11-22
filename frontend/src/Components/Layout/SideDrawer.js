@@ -27,12 +27,16 @@ import {
   Spinner,
 
 } from '@chakra-ui/react';
+ 
+// import NotificationBadge from 'react-notification-badge';
+// import {Effect} from 'react-notification-badge';
 import { BellIcon,SearchIcon } from '@chakra-ui/icons';
 import { ChatState } from '../../Context/ChatProvider';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import LoadingSearchResult from '../Spinner/LoadingSearchResult';
 import UserListItem from '../List/UserListItem';
+import { getSender } from '../Config/LogicOfDisplayingChat';
 
 
 
@@ -42,10 +46,9 @@ export default function SideDrawer() {
     const {
         setSelectedChat,
         user,
-        notification,
-        setNotification,
         chats,
         setChats,
+        notification, setNotification,
       } = ChatState();
   const history = useHistory();
   const toast = useToast();
@@ -158,7 +161,32 @@ export default function SideDrawer() {
 
           <Flex alignItems={'center'}>
             <Stack direction={'row'} spacing={7}>
+              <Menu>
+              <MenuButton p={1}>
+              {/* <NotificationBadge
+                count={notification.length}
+                effect={Effect.SCALE}
+              /> */}
               <BellIcon boxSize={8}/>
+              </MenuButton>
+              <MenuList pl={2}>
+              {!notification.length && "No New Messages"}
+              {notification.map((notif) => (
+                <MenuItem
+                  key={notif._id}
+                  onClick={() => {
+                    setSelectedChat(notif.chat);
+                    setNotification(notification.filter((n) => n !== notif));
+                  }}
+                >
+                  {notif.chat.isGroupChat
+                    ? `New Message in ${notif.chat.chatName}`
+                    : `New Message from ${getSender(user, notif.chat.users)}`}
+                </MenuItem>
+              ))}
+            </MenuList>
+
+              </Menu>
 
               <Menu>
                 <MenuButton
@@ -183,7 +211,7 @@ export default function SideDrawer() {
                   </Center>
                   <br />
                   <Center>
-                    <p>{user.name}</p>
+                    <div>{user.name}</div>
                   </Center>
                   <br />
                   <MenuDivider />

@@ -1,5 +1,5 @@
 import { CloseIcon } from '@chakra-ui/icons'
-import { Badge, Box, CloseButton, Flex } from '@chakra-ui/react'
+import { Badge } from '@chakra-ui/react'
 import React from 'react'
 
 const UserAvatarBadge = ({user , handleFunction}) => {

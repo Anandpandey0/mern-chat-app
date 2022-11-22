@@ -15,10 +15,10 @@ const Chatpage = ()=>{
     {user && <SideDrawer/>}
     <HStack >
   <Box>
-    {user&& <ChatsContainer/>}
+    {user&& <ChatsContainer fetchAgain={fetchAgain} />}
   </Box>
   <Box  >
-    {user && <ActiveChat/>}
+    {user && <ActiveChat fetchAgain={fetchAgain} setFetchAgain={setFetchAgain}/>}
   </Box>
  
 </HStack>
